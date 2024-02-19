@@ -13,8 +13,9 @@ let
   };
 in {
 
-  options.services.target = mkOption {
+  options.services.networking.target = mkOption {
       type = types.enum targets;
+      default = "desktop";
   };
 
   config = {
