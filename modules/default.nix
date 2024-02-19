@@ -3,6 +3,5 @@
 {
   imports = [
     ./home-manager
-    ./nixos
   ];
 }
