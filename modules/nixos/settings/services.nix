@@ -22,7 +22,7 @@
 
 
   # Enable keyd
-  services.keyd.enable = false;
+  services.keyd.enable = true;
 
   # Enable pipewire
   services.pipewire = {
