@@ -3,6 +3,7 @@
   fonts.fontconfig.enable = true;
 
   fonts.packages = with pkgs; [
+    powerline
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -13,6 +14,12 @@
     dina-font
     proggyfonts
     comic-mono
-    nerdfonts
+    iosevka
+    font-awesome
+    ubuntu_font_family
+    terminus_font
+    (nerdfonts.override { fonts = [ "Inconsolata" ]; })
+    inconsolata
+    inconsolata-nerdfont
   ];
 }

@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 
   imports = [
     ./eww
+    ./swaylock.nix
   ];
 
   home.packages = with pkgs; [
@@ -27,6 +28,8 @@
     qt6.qtwayland
     libsForQt5.polkit-kde-agent
     wl-clipboard
+    wlr-randr
+    fuzzel
   ];
 
   gtk.cursorTheme = {
@@ -56,7 +59,7 @@
 
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
-      "$menu" = "wofi --show drun";
+      "$menu" = "fuzzel";
       "$terminal" = "wezterm start --new-tab";
 
       exec-once = [
@@ -67,7 +70,7 @@
         "swww init"
         "wl-paste --type text  --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "swayidle -w timeout 300 'loginctl lock-session'"
+        "swayidle -w timeout 300 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep ${config.programs.swaylock.package}/bin/swaylock -f"
         "mako"
       ];
 
@@ -168,7 +171,7 @@
         "$mainMod, return, exec, $terminal"
         "$mainMod, space, fullscreen, "
         "$mainMod, tab, cyclenext, "
-        "SUPERSHIFT, tab, cyclenext, prev"
+        "$mainMod SHIFT, tab, cyclenext, prev"
 
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
@@ -178,17 +181,17 @@
         "$mainMod, P, exec, $menu"
         "$mainMod, B, pseudo,"
         "$mainMod, J, togglesplit,"
-        "$mainMod, L, exec, loginctl lock-session"
+        "$mainMod, L, exec, swaylock --grace 0"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
-        "SUPERSHIFT, left, movewindow, l"
-        "SUPERSHIFT, right, movewindow, r"
-        "SUPERSHIFT, up, movewindow, u"
-        "SUPERSHIFT, down, movewindow, d"
+        "$mainMod SHIFT, left, movewindow, l"
+        "$mainMod SHIFT, right, movewindow, r"
+        "$mainMod SHIFT, up, movewindow, u"
+        "$mainMod SHIFT, down, movewindow, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
