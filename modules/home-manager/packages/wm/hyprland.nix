@@ -66,7 +66,7 @@
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
       "$menu" = "fuzzel";
-      "$terminal" = "wezterm start --new-tab";
+      "$terminal" = "wezterm start";
 
       exec-once = [
         "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
