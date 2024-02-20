@@ -6,9 +6,9 @@
     ./editor.nix
     ./experimental-features.nix
     ./fonts.nix
-    ./hyprland.nix
     ./i18n.nix
     ./keyd.nix
+    ./keyring.nix
     ./networking.nix
     ./security.nix
     ./services.nix
