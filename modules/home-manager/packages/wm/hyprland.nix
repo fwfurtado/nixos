@@ -7,6 +7,12 @@
     ./swaylock.nix
   ];
 
+  home.file.".fwfurtado/scripts/screenshot.sh".text = ''
+  #!/bin/sh
+
+  grim -g "$(slurp -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+  '';
+
   home.packages = with pkgs; [
     hyprland-protocols
     hyprpicker
@@ -36,6 +42,9 @@
     mpv
     imv
     wlogout
+    slurp
+    satty
+    grim
   ];
 
   gtk.cursorTheme = {
@@ -189,7 +198,7 @@
         "$mainMod, B, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, L, exec, swaylock --grace 0"
-        ", Print, exec, flameshot gui"
+        ", Print, exec, sh ~/.fwfurtado/scripts/screenshot.sh"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
