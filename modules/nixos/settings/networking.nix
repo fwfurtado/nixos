@@ -15,7 +15,7 @@ in {
 
   options.services.networking.target = mkOption {
       type = types.enum targets;
-      default = "desktop";
+      default = "laptop";
   };
 
   config = {
