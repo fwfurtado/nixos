@@ -32,6 +32,10 @@
     fuzzel
     swayosd
     wluma
+    qutebrowser
+    mpv
+    imv
+    wlogout
   ];
 
   gtk.cursorTheme = {
@@ -178,7 +182,7 @@
 
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, E, exec, $fileManager"
+        "$mainMod, E, exec, wlogout"
         # "$mainMod, V, togglefloating,"
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
         "$mainMod, P, exec, $menu"

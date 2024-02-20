@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # Enable Display Manager
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
@@ -10,7 +10,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+          command = "${lib.getExe pkgs.greetd.wlgreet} --command Hyprland";
           user = "me";
         };
       };
@@ -18,9 +18,7 @@
 
     environment.systemPackages = with pkgs; [
       greetd.tuigreet
+      greetd.wlgreet
       greetd.regreet
-      qutebrowser
-      mpv
-      imv
     ];
 }
