@@ -189,6 +189,7 @@
         "$mainMod, B, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod, L, exec, swaylock --grace 0"
+        ", Print, exec, flameshot gui"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
