@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
 
@@ -70,6 +70,11 @@
     #     inputs.plugin_name.packages.${pkgs.system}.default
     # ];
 
+    plugins = [
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+    ];
+
+
     settings = {
 
       "$mod" = "SUPER";
@@ -79,7 +84,7 @@
 
       exec-once = [
         "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
-        "waybar"
+        # "waybar"
         # "eww daemon"
         # "hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}"
         "swww init"

@@ -9,27 +9,39 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "github:hyprwm/Hyprland";
-    # plugin_name = {
-    #     url = "github:maintener/plugin_name";
-    #     inputs.hyprland.follows = "hyprland"; # IMPORTANT
-    # };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
+      homeConfigurations."me@rabbit-hole" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs;
+
+        modules = [
+          hyprland.homeManagerModules.default
+          {wayland.windowManager.hyprland.enable = true;}
+          # ...
+        ];
+      };
 
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
             ./hosts/default/configuration.nix
-            inputs.home-manager.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
           ];
         };
     };

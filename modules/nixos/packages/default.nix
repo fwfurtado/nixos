@@ -7,5 +7,8 @@
     neovim
     keyd
     git
+    meson
+    cpio
+    cmake
   ];
 }
