@@ -20,5 +20,6 @@
     zoom
     zip
     unzip
+    tlrc
   ];
 }
