@@ -10,7 +10,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.greetd.wlgreet} --command Hyprland";
+          command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd Hyprland";
           user = "me";
         };
       };
