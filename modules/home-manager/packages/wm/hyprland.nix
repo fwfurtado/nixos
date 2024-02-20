@@ -30,6 +30,8 @@
     wl-clipboard
     wlr-randr
     fuzzel
+    swayosd
+    wluma
   ];
 
   gtk.cursorTheme = {
@@ -72,6 +74,7 @@
         "wl-paste --type image --watch cliphist store"
         "swayidle -w timeout 300 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep ${config.programs.swaylock.package}/bin/swaylock -f"
         "mako"
+        "swayosd-server"
       ];
 
       general = {

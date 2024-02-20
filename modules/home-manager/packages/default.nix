@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{  pkgs, ... }:
 
 {
 
@@ -21,5 +21,6 @@
     zip
     unzip
     tlrc
+    flameshot
   ];
 }
