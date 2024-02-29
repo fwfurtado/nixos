@@ -16,9 +16,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, rust-overlay, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,6 +34,9 @@
             {
               home-manager.extraSpecialArgs = { inherit inputs; };
             }
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            })
           ];
         };
     };

@@ -22,5 +22,7 @@
     unzip
     tlrc
     flameshot
+    go
+    rust-bin.stable.latest.default
   ];
 }
