@@ -24,5 +24,6 @@
     flameshot
     go_1_22
     rust-bin.stable.latest.default
+    pipx
   ];
 }
