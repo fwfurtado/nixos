@@ -22,6 +22,8 @@ in {
     networking = {
       hostName = defaultConfigs.hostname.${cfg.target}; # Define your hostname.
       networkmanager.enable = true;
+      wireless.iwd.enable = true;
+      wireless.userControlled.enable = true;
     };
   };
 }

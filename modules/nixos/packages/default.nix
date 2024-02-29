@@ -10,5 +10,7 @@
     meson
     cpio
     cmake
+    glibc
+    networkmanagerapplet
   ];
 }

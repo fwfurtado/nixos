@@ -47,11 +47,32 @@
     grim
   ];
 
-  gtk.cursorTheme = {
-    package = pkgs.quintom-cursor-theme;
-    name = "Quintom_Ink";
-    size = 36;
-  };
+
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  #   package = pkgs.bibata-cursors;
+  #   name = "Bibata-Modern-Classic";
+  #   size = 16;
+  # };
+
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     package = pkgs.flat-remix-gtk;
+  #     name = "Flat-Remix-GTK-Grey-Darkest";
+  #   };
+
+  #   iconTheme = {
+  #     package = pkgs.gnome.adwaita-icon-theme;
+  #     name = "Adwaita";
+  #   };
+
+  #   font = {
+  #     name = "Sans";
+  #     size = 11;
+  #   };
+  # };
 
 
   wayland.windowManager.hyprland = {
@@ -71,7 +92,7 @@
     # ];
 
     plugins = [
-        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
     ];
 
 
@@ -80,11 +101,11 @@
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
       "$menu" = "fuzzel";
-      "$terminal" = "wezterm start";
+      "$terminal" = "wezterm";
 
       exec-once = [
         "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
-        # "waybar"
+        "waybar"
         # "eww daemon"
         # "hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}"
         "swww init"

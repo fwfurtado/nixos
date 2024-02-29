@@ -24,16 +24,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."me@rabbit-hole" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-
-        modules = [
-          hyprland.homeManagerModules.default
-          {wayland.windowManager.hyprland.enable = true;}
-          # ...
-        ];
-      };
-
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
